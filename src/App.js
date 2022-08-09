@@ -64,31 +64,35 @@ export default function App() {
 
   return (
     <div className="App">
-      <h1>Pokédex</h1>
-      <label htmlFor="pokemon-select">Select pokémon</label>
-      <select
-        name="pokemon"
-        id="pokemon-select"
-        onChange={(e) => {
-          console.log("event", e.target.value);
-          setCurrentPoke(e.target.value);
-          console.log("currentPoke", currentPoke);
-        }}
-      >
-        {pokeList &&
-          pokeList.map((pokemon, index) => {
-            return (
-              <option key={index} value={index + 1}>
-                {pokemon?.name}
-              </option>
-            );
-          })}
-      </select>
-      {console.log("currentPokeData", currentPokeData)}
-      <img
-        src={currentPokeData?.pokeData?.sprites?.back_default}
-        alt={currentPokeData?.pokeData?.name}
-      ></img>
+      <div className="pokedex">
+        <h1>Pokédex</h1>
+        <label htmlFor="pokemon-select">Select pokémon</label>
+        <select
+          name="pokemon"
+          id="pokemon-select"
+          onChange={(e) => {
+            console.log("event", e.target.value);
+            setCurrentPoke(e.target.value);
+            console.log("currentPoke", currentPoke);
+          }}
+        >
+          {pokeList &&
+            pokeList.map((pokemon, index) => {
+              return (
+                <option key={index} value={index + 1}>
+                  {pokemon?.name}
+                </option>
+              );
+            })}
+        </select>
+        <div className="screen">
+        {console.log("currentPokeData", currentPokeData)}
+        <img
+          src={currentPokeData?.pokeData?.sprites?.back_default}
+          alt={currentPokeData?.pokeData?.name}
+        ></img>
+        </div>
+      </div>
     </div>
   );
 }
